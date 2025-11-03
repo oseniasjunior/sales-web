@@ -1,0 +1,33 @@
+<div>
+
+  <div>
+    <img [src]="imageUrl()">
+  </div>
+
+  <div>
+
+    <div>
+      <label>Nome da fruta (Two Way Data Bind)</label>
+      <input [(ngModel)]="fruitName">
+    </div>
+<!--    <div>-->
+<!--      <label>Property bind (signal)</label>-->
+<!--      <input type="text" [ngModel]="fruitName()" (ngModelChange)="fruitName.set($event)" />-->
+<!--    </div>-->
+
+    <div>
+      {{fruitName()}}
+    </div>
+
+    <button (click)="addFruit()">Adicionar</button>
+  </div>
+
+  <div>
+    <ul>
+      @for(fruit of fruits(); track fruit){
+        <li>{{ fruit }}</li>
+      }
+    </ul>
+  </div>
+
+</div>

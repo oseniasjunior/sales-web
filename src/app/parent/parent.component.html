@@ -1,0 +1,5 @@
+<div class="parent">
+  <p>ESTOU NO PAI</p>
+  <span>{{mensagem()}}</span>
+  <app-children [mensagem]="mensagem()" (emitirMensagem)="ouvirMensagem($event)"></app-children>
+</div>

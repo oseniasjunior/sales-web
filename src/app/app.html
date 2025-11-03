@@ -1,0 +1,23 @@
+<h1>{{ title() }}</h1>
+<h2>{{customText}}</h2>
+
+<button (click)="changeCustomText()">Alterar texto</button>
+<button (click)="onChangeTitle()">Alterar title</button>
+
+<div>
+  <section>
+    <a [routerLink]="['/fruits']">Fruits</a>
+  </section>
+
+  <section>
+    <a [routerLink]="['/parent']">Input e Output</a>
+  </section>
+
+  <section>
+    <a [routerLink]="['/employee']">Funcionário</a>
+  </section>
+
+
+  <router-outlet></router-outlet>
+
+</div>

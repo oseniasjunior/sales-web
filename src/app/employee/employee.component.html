@@ -1,0 +1,32 @@
+<h1>Cadastro do funcionário</h1>
+<div>
+  <form>
+    <section>
+      <label>Nome</label>
+      <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="employee().name">
+    </section>
+    <section>
+      <label>CPF</label>
+      <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="employee().document">
+    </section>
+    <section>
+      <label>Sexo</label>
+      <input type="radio" name="sexo" value="M" [ngModelOptions]="{standalone: true}" [(ngModel)]="employee().gender">Masculino
+      <input type="radio" name="sexo" value="F" [ngModelOptions]="{standalone: true}" [(ngModel)]="employee().gender">Feminino
+    </section>
+  </form>
+  <button (click)="add()">Adicionar</button>
+</div>
+
+<app-employee-list [addedEmployee]="addedEmployee" >
+
+</app-employee-list>
+
+<div>
+  <section class="total-male">
+    Total de homens: {{totalMale()}}
+  </section>
+  <section class="total-female">
+    Total de mulheres: {{totalFemale()}}
+  </section>
+</div>
