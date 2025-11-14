@@ -1,24 +1,72 @@
 <h1>Cadastro do funcionário</h1>
+<!--<span><strong>Usuário logado: </strong>{{myService.user}}</span>-->
 <div>
-  <form>
+  <form [formGroup]="formGroup">
     <section>
       <label>Nome</label>
-      <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="employee().name">
+      <input type="text" formControlName="name" >
+      @if(formGroup.hasError('required', 'name')){
+        <span [ngStyle]="{'color': 'red'}">
+          Campo obrigatório
+        </span>
+      }
     </section>
+
     <section>
-      <label>CPF</label>
-      <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="employee().document">
+      <label>Salário</label>
+      <input type="number" formControlName="salary">
     </section>
+
+    <section>
+      <label>Data de admissão</label>
+      <input type="date" formControlName="admission_date">
+    </section>
+
+    <section>
+      <label>Data de aniversário</label>
+      <input type="date" formControlName="birth_date">
+    </section>
+
     <section>
       <label>Sexo</label>
-      <input type="radio" name="sexo" value="M" [ngModelOptions]="{standalone: true}" [(ngModel)]="employee().gender">Masculino
-      <input type="radio" name="sexo" value="F" [ngModelOptions]="{standalone: true}" [(ngModel)]="employee().gender">Feminino
+      <select formControlName="gender">
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
     </section>
+
+    <section>
+      <label>Departamento</label>
+      <select formControlName="department">
+        @for(department of departmentList(); track department){
+          <option [value]="department.id">{{ department.name }}</option>
+        }
+      </select>
+    </section>
+
+    <section>
+      <label>Bairro</label>
+      <select formControlName="district">
+        @for(district of districtList(); track district){
+          <option [value]="district.id">{{ district.name }}</option>
+        }
+      </select>
+    </section>
+
+    <section>
+      <label>Estado civil</label>
+      <select formControlName="marital_status">
+        @for(marital_status of maritalStatusList(); track marital_status){
+          <option [value]="marital_status.id">{{ marital_status.name }}</option>
+        }
+      </select>
+    </section>
+
   </form>
-  <button (click)="add()">Adicionar</button>
+  <button (click)="add()" [disabled]="!formGroup.valid">Adicionar</button>
 </div>
 
-<app-employee-list [addedEmployee]="addedEmployee" >
+<app-employee-list (totals)="subscribeTotals($event)">
 
 </app-employee-list>
 

@@ -1,16 +1,16 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Nome</th>
-      <th>CPF</th>
       <th>Sexo</th>
     </tr>
   </thead>
   <tbody>
-    @for(employee of employees(); track employee){
+    @for(employee of employeesList(); track employee.id){
       <tr>
+        <td>{{employee.id}}</td>
         <td>{{employee.name}}</td>
-        <td>{{employee.document}}</td>
         <td>{{employee.gender}}</td>
       </tr>
     }

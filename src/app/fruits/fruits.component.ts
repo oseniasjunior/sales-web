@@ -1,5 +1,6 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {MyService} from '../services/my.service';
 
 @Component({
   selector: 'app-fruits',
@@ -13,6 +14,8 @@ export class FruitsComponent implements OnInit {
   protected fruits = signal<string[]>([]);
 
   imageUrl = signal('https://angular.io/assets/images/logos/angular/angular.png');
+
+  myService = inject(MyService);
 
   ngOnInit() {
     this.getFruits();
